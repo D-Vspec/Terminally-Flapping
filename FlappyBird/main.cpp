@@ -11,7 +11,7 @@ const int WIDTH = 80;
 const int HEIGHT = 20;
 const int SPAWN_DELAY = 100;
 const int MOVE_DELAY = 50;
-const int SPACING = 5;
+const int SPACING = 10;
 
 //All the cursor commands and moveTo rely on ANSI escape codes to work
 //https://en.wikipedia.org/wiki/ANSI_escape_code
