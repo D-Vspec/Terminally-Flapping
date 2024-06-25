@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <thread>
 #include <chrono>
 #include <vector>
@@ -10,6 +10,10 @@ const int HEIGHT = 20;
 const int SPAWN_DELAY = 100;
 const int MOVE_DELAY = 50;
 const int SPACING = 5;
+
+
+//All the cursor commands and moveTo rely on ANSI escape codes to work
+//https://en.wikipedia.org/wiki/ANSI_escape_code
 
 void hideCursor() {
     cout << "\033[?25l";
@@ -88,3 +92,8 @@ int main() {
 
     return 0;
 }
+
+//  ／l、
+//（ﾟ､ ｡ ７
+//  l  ~ヽ
+//  じしf_, )ノ
