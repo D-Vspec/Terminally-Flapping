@@ -1,6 +1,7 @@
 Flappy bird on the terminal
 Everything is on main.cpp
 
-![image](https://github.com/D-Vspec/Terminally-Flapping/assets/66212501/ba3d4816-cbc3-42ab-b6f2-8ddad14cc072)
+![image](https://github.com/D-Vspec/Terminally-Flapping/assets/66212501/4b42bd71-d8e4-462f-b363-83519a8fe3cb)
 
-![image](https://github.com/D-Vspec/Terminally-Flapping/assets/66212501/c27d6610-5257-4e67-9759-58b3b55d260c)
+![image](https://github.com/D-Vspec/Terminally-Flapping/assets/66212501/6be0c0c9-9def-416d-aa36-2980a425cf97)
+
