@@ -7,6 +7,15 @@
 
 using namespace std;
 
+const int WIDTH = 80;
+const int HEIGHT = 20;
+const int SPAWN_DELAY = 100;
+const int MOVE_DELAY = 50;
+const int SPACING = 5;
+
+//All the cursor commands and moveTo rely on ANSI escape codes to work
+//https://en.wikipedia.org/wiki/ANSI_escape_code
+
 void hideCursor() {
     cout << "\033[?25l";
 }
@@ -38,26 +47,20 @@ void clearLine(int WIDTH, int HEIGHT, int column) {
     }
 }
 
-void displayZero(int width, int height) {
-    int row = height / 2; // Calculate the center row
-    int col = width / 2;  // Calculate the center column
+void displayZero(int WIDTH, int HEIGHT) {
+    int row = HEIGHT / 2; // Calculate the center row
+    int col = WIDTH / 2;  // Calculate the center column
 
     moveTo(row, col);
     cout << '0';
 }
 
 bool checkCollision(int column, int holeStart) {
-    int centerRow = 20 / 2; // Assuming height is 20
-    return (column == 0 || column == -1) && !(centerRow >= holeStart && centerRow < holeStart + 3);
+    int centerRow = HEIGHT / 2; // Center row
+    return (column == WIDTH / 2 || column == WIDTH / 2 - 1) && !(centerRow >= holeStart && centerRow < holeStart + 3);
 }
 
 int main() {
-    const int width = 80;
-    const int height = 20;
-    const int spawnDelay = 100;
-    const int moveDelay = 50;
-    const int spacing = 5;
-
     vector<int> columns;
     vector<int> holePositions;
 
@@ -65,19 +68,19 @@ int main() {
 
     hideCursor();
 
-    displayZero(width, height);  // Display the '0' character in the center
+    displayZero(WIDTH, HEIGHT);  // Display the '0' character in the center
 
     bool collisionDetected = false;
 
     while (!collisionDetected) {
-        if (columns.empty() || columns.back() <= width - spacing - 2) {
-            columns.push_back(width - 1);
-            holePositions.push_back(rand() % (height - 3)); // Random hole position
+        if (columns.empty() || columns.back() <= WIDTH - SPACING - 2) {
+            columns.push_back(WIDTH - 1);
+            holePositions.push_back(rand() % (HEIGHT - 3)); // Random hole position
         }
 
         for (size_t i = 0; i < columns.size(); ++i) {
-            clearLine(width, height, columns[i] + 2);
-            displayLine(width, height, columns[i], holePositions[i]);
+            clearLine(WIDTH, HEIGHT, columns[i] + 2);
+            displayLine(WIDTH, HEIGHT, columns[i], holePositions[i]);
             columns[i]--;
 
             if (checkCollision(columns[i], holePositions[i])) {
@@ -91,7 +94,7 @@ int main() {
             holePositions.erase(holePositions.begin());
         }
 
-        this_thread::sleep_for(chrono::milliseconds(moveDelay));
+        this_thread::sleep_for(chrono::milliseconds(MOVE_DELAY));
     }
 
     showCursor();
