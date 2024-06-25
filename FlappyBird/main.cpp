@@ -64,6 +64,8 @@ int main() {
     vector<int> columns;
     vector<int> holePositions;
 
+    setHook();
+
     srand(time(0)); // Seed for random number generation
 
     hideCursor();
@@ -106,3 +108,4 @@ int main() {
 //（ﾟ､ ｡ ７
 //  l  ~ヽ
 //  じしf_, )ノ
+
