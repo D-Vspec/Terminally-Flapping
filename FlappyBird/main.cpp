@@ -10,8 +10,8 @@ using namespace std;
 
 const int WIDTH = 80;
 const int HEIGHT = 20;
-const int SPAWN_DELAY = 100;
-const int MOVE_DELAY = 500;
+const int SPAWN_DELAY = 20;
+const int MOVE_DELAY = 100;
 const int SPACING = 20;
 
 int BIRD_POS = HEIGHT / 2;
@@ -62,15 +62,12 @@ void clearBird(int row) {
 }
 
 bool checkCollision(int column, int holeStart) {
-    int centerRow = HEIGHT / 2; // Center row
-    return (column == WIDTH / 2 || column == WIDTH / 2 - 1) && !(centerRow >= holeStart - 1 && centerRow <= holeStart + 6);
+    return (column == WIDTH / 2 || column == WIDTH / 2 - 1) && !(BIRD_POS >= holeStart && BIRD_POS < holeStart + 6);
 }
 
 int main() {
     vector<int> columns;
     vector<int> holePositions;
-
-    setHook();
 
     srand(time(0)); // Seed for random number generation
 
